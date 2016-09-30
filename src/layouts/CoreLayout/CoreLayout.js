@@ -1,11 +1,13 @@
 import React from 'react'
 import Header from '../../components/Header'
+import BalanceContainer from '../../containers/BalanceContainer'
 import './CoreLayout.scss'
 import '../../styles/core.scss'
 
 export const CoreLayout = ({ children }) => (
-  <div className='container text-center'>
+  <div>
     <Header />
+    <BalanceContainer />
     <div className='core-layout__viewport'>
       {children}
     </div>
