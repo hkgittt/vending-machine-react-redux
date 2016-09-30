@@ -13,7 +13,7 @@ const Machine = ({ items, onItemPress }) => (
 )
 
 Machine.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.object,
   onItemPress: PropTypes.func
 }
 

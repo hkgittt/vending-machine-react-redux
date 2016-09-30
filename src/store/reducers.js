@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import locationReducer from './location'
-import balanceReducer from '../modules/balanceReducer'
-import machineReducer from '../modules/machineReducer'
+import { balanceReducer, machineReducer, cartReducer } from '../modules'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
     balance: balanceReducer,
     machine: machineReducer,
+    cart: cartReducer,
     ...asyncReducers
   })
 }

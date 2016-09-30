@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 import Machine from '../components/Machine'
 import { getItemsWithAffordability } from '../selectors/machineSelector'
 import { balanceSubtract } from '../../../modules/balanceReducer'
+import { quantitySubtract } from '../../../modules/machineReducer'
+import { cartAdd } from '../../../modules/cartReducer'
 
 const mapStateToProps = state => (
   {
@@ -11,7 +13,11 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    onItemPress: amount => () => dispatch(balanceSubtract(amount))
+    onItemPress: (amount, itemName) => () => {
+      dispatch(balanceSubtract(amount))
+      dispatch(quantitySubtract(itemName))
+      dispatch(cartAdd(itemName))
+    }
   }
 )
 

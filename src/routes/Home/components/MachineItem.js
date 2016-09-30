@@ -14,7 +14,7 @@ const MachineItem = ({ item, onButtonPress }) => (
     { item.size !== 'NA'
       ? <div className='f4 mid-gray avenir cf mv1'>
         <div className='fl'>Size</div>
-        <div className='fr'>{item.size}</div>
+        <div className='fr'>{item.itemSize}</div>
       </div>
       : null
     }
@@ -22,8 +22,12 @@ const MachineItem = ({ item, onButtonPress }) => (
       <div className='fl'>Quantity</div>
       <div className='fr'>{item.quantity}</div>
     </div>
-    <button className='' disabled={!item.currentlyAffordable} onClick={onButtonPress(item.price)}>
-      Get
+    <button className='' disabled={!item.currentlyAffordable || item.quantity < 1} onClick={onButtonPress(item.price, item.name)}>
+      {
+        item.quantity < 1
+        ? 'Sold Out'
+        : 'Get'
+      }
     </button>
   </div>
 )

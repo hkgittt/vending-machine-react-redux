@@ -5,7 +5,9 @@ const getItems = state => state.machine.items
 
 export const getItemsWithAffordability = createSelector(
   [getBalance, getItems],
-  (balance, items) => (
-    items.map(item => Object.assign(item, { currentlyAffordable: item.price <= balance }))
-  )
+  (balance, items) => {
+    return items.map(item => {
+      return item.set('currentlyAffordable', item.price <= balance)
+    })
+  }
 )
